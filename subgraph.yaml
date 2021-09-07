@@ -1,0 +1,28 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Rarity
+    network: fantom
+    source:
+      address: "0xce761d788df608bd21bdd59d6f4b54b2e27f25bb"
+      abi: Rarity
+      startBlock: 16419633
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - Summoner
+      abis:
+        - name: Rarity
+          file: ./abis/Rarity.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: leveled(indexed address,uint256,uint256)
+          handler: handleLeveled
+        - event: summoned(indexed address,uint256,uint256)
+          handler: handleSummoned
+      file: ./src/mapping.ts

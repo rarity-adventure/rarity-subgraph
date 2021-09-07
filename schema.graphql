@@ -1,0 +1,27 @@
+type Summoner @entity {
+  # Summoner unique id
+  id: ID!
+
+  # Summoner information
+  owner: Bytes!
+  _class: BigInt!
+  _level: BigInt!
+}
+
+type MetaData @entity {
+  id: ID!
+
+  # Summoners counts for class
+  summoners: BigInt
+  barbarians: BigInt
+  bards: BigInt
+  clerics: BigInt
+  druids: BigInt
+  fighters: BigInt
+  monks: BigInt
+  paladins: BigInt
+  rangers: BigInt
+  rogues: BigInt
+  sorcerers: BigInt
+  wizards: BigInt
+}
