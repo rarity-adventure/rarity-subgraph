@@ -18,7 +18,7 @@ export function handleTransfer(event: Transfer): void {
 export function handleLeveled(event: leveled): void {
   let summoner = Summoner.load(event.params.summoner.toHex())
   if (summoner !== null) {
-    summoner._level = event.params.level
+    summoner._level = summoner._level.plus(integer.ONE)
     summoner.save()
   }
 }

@@ -1,0 +1,21 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Rarity
+    network: fantom
+    source:
+      address: ""
+      abi: RarityMarket
+      startBlock: 16419633
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+      abis:
+        - name: RarityMarket
+          file: ./abis/RarityMarket.json
+      eventHandlers:
+      file: ./src/mapping.ts
