@@ -1,0 +1,5 @@
+type Register @entity {
+  id: ID!
+  blocktime: BigInt
+  days: BigInt
+}

@@ -1,0 +1,24 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Daycare
+    network: fantom
+    source:
+      address: "0xf1bf34E46ECf465591B7a7fA9635E4C583174fa3"
+      abi: Daycare
+      startBlock: 16516361
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - Register
+      abis:
+        - name: Daycare
+          file: ./abis/Daycare.json
+      eventHandlers:
+        - event: registeredDaycare(address,uint256,uint256)
+          handler: handleRegistered
+      file: ./src/mapping.ts
