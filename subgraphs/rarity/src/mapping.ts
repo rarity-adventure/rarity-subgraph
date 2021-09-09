@@ -2,8 +2,52 @@ import {
   Transfer,
   summoned, leveled,
 } from "../generated/Rarity/Rarity"
-import {Classes, Level, MetaData, Owners, Summoner} from "../generated/schema";
-import { integer, ZERO_ADDRESS } from '@protofire/subgraph-toolkit'
+import {Global, Summoner, User} from "../generated/schema";
+import { integer } from '@protofire/subgraph-toolkit'
+
+export function handleTransfer(event: Transfer): void {}
+export function handleLeveled(event: leveled): void {}
+
+const global_state_id = "global"
+const unique_owners_state_id = "owners"
+
+export function handleSummoned(event: summoned): void {
+    let summoner = new Summoner(event.params.summoner.toHex())
+    summoner.owner = event.params.owner.toHex()
+    summoner._level = integer.ONE
+    summoner._class = event.params._class
+    summoner.save()
+
+    // Load the global state
+    let global = Global.load(global_state_id)
+
+    // Create the global state no exists
+    if (!global) {
+      global = new Global(global_state_id)
+    }
+
+    // Load this specific user data
+    let user = User.load(event.params.owner.toHex())
+
+    // If doesnt exist create it
+    if (!user) {
+      user = new User(event.params.owner.toHex())
+      user.count = integer.ZERO
+      global.owners = global.owners.plus(integer.ONE)
+    }
+
+    user.count = user.count.plus(integer.ONE)
+    user.save()
+
+    global.summoners = global.summoners.plus(integer.ONE)
+
+    // Save states
+    global.save()
+
+}
+
+
+/*
 
 export function handleTransfer(event: Transfer): void {
 
@@ -181,3 +225,4 @@ export function handleSummoned(event: summoned): void {
   classes.save()
   metadata.save()
 }
+*/

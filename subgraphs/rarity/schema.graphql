@@ -8,38 +8,35 @@ type Summoner @entity {
   _level: BigInt!
 }
 
-type Classes @entity {
-  id: ID! # Classes id "classes"
-  barbarians: BigInt
-  bards: BigInt
-  clerics: BigInt
-  druids: BigInt
-  fighters: BigInt
-  monks: BigInt
-  paladins: BigInt
-  rangers: BigInt
-  rogues: BigInt
-  sorcerers: BigInt
-  wizards: BigInt
+#type Classes @entity {
+#  id: ID! # Classes id "classes"
+#  barbarians: BigInt
+#  bards: BigInt
+# clerics: BigInt
+#  druids: BigInt
+#  fighters: BigInt
+#  monks: BigInt
+#  paladins: BigInt
+#  rangers: BigInt
+#  rogues: BigInt
+#  sorcerers: BigInt
+#  wizards: BigInt
+#}
+
+#type Level @entity {
+#  id: ID!  # lvl number
+#  count: BigInt
+#}
+
+type User @entity {
+  id: ID! # account
+  count: BigInt!
 }
 
-type Level @entity {
-  id: ID!  # lvl number
-  count: BigInt
-}
-
-type Owners @entity {
-  id: ID!  # owners id
-  owners: [String!]
-}
-
-type MetaData @entity {
-  id: ID!
-
+type Global @entity {
+  id: ID! # global
   summoners: BigInt
   owners: BigInt
-  classes: Classes
-  levels: [Level!]
 }
 
 
