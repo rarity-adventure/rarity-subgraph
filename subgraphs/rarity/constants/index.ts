@@ -1,13 +1,39 @@
-import {BigInt} from "@graphprotocol/graph-ts/index";
+export let BARBARIAN = "1"
+export let BARD = "2"
+export let CLERIC = "3"
+export let DRUID = "4"
+export let FIGHTER = "5"
+export let MONK = "6"
+export let PALADIN = "7"
+export let RANGER = "8"
+export let ROGUE = "9"
+export let SORCERER = "10"
+export let WIZARD = "11"
 
-export let BARBARIAN = BigInt.fromI32(1)
-export let BARD = BigInt.fromI32(2)
-export let CLERIC = BigInt.fromI32(3)
-export let DRUID = BigInt.fromI32(4)
-export let FIGHTER = BigInt.fromI32(5)
-export let MONK = BigInt.fromI32(6)
-export let PALADIN = BigInt.fromI32(7)
-export let RANGER = BigInt.fromI32(8)
-export let ROGUE = BigInt.fromI32(9)
-export let SORCERER = BigInt.fromI32(10)
-export let WIZARD = BigInt.fromI32(11)
+export function classToString(id: string): string {
+  if (id == BARBARIAN) {
+    return "barbarian"
+  } else if (id == BARD) {
+    return "bard"
+  } else if (id == CLERIC) {
+    return "cleric"
+  } else if (id == DRUID) {
+    return "druid"
+  } else if (id == FIGHTER) {
+    return "fighter"
+  } else if (id == MONK) {
+    return "monk"
+  } else if (id == PALADIN) {
+    return "paladin"
+  } else if (id == RANGER) {
+    return "ranger"
+  } else if (id == ROGUE) {
+    return "rogue"
+  } else if (id == SORCERER) {
+    return "sorcerer"
+  } else if (id == WIZARD) {
+    return "wizard"
+  } else {
+    return "unknown"
+  }
+}

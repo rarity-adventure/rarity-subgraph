@@ -17,6 +17,8 @@ dataSources:
         - Summoner
         - User
         - Global
+        - Classes
+        - Level
       abis:
         - name: Rarity
           file: ./abis/Rarity.json
