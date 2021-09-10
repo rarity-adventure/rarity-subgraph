@@ -1,0 +1,14 @@
+type Summoner @entity {
+  id: ID!
+
+  balance: BigInt!
+}
+
+type Globals @entity {
+  id: ID!
+  holders: BigInt!
+  supply: BigInt!
+}
+
+
+

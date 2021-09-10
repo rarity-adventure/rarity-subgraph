@@ -21,7 +21,7 @@ dataSources:
         - Level
       abis:
         - name: Rarity
-          file: ./abis/Rarity.json
+          file: ./abis/Gold.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
