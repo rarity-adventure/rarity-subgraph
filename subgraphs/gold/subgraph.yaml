@@ -3,10 +3,10 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: Rarity
+    name: Gold
     network: fantom
     source:
-      address: "0x2069B76Afe6b734Fb65D1d099E7ec64ee9CC76B2"
+      address: "0x2069b76afe6b734fb65d1d099e7ec64ee9cc76b2"
       abi: Gold
       startBlock: 16507803
     mapping:

@@ -1,5 +1,5 @@
-import {Transfer} from "../generated/Rarity/Gold";
-import { integer, ZERO_ADDRESS } from '@protofire/subgraph-toolkit'
+import {Transfer} from "../generated/Gold/Gold";
+import { integer } from '@protofire/subgraph-toolkit'
 import {Globals, Summoner} from "../generated/schema";
 
 const global_state_id = "global"
@@ -7,7 +7,7 @@ const global_state_id = "global"
 export function handleTransfer(event: Transfer): void {
 
     // Check if is a minting
-    if (event.params.from.toHex() == ZERO_ADDRESS) {
+    if (event.params.from.toString() == event.params.to.toString()) {
 
         let globals = Globals.load(global_state_id)
         if (!globals) {
@@ -17,9 +17,9 @@ export function handleTransfer(event: Transfer): void {
         }
 
         // Assign balance to receiver and increase supply
-        let receiver = Summoner.load(event.params.to.toHex())
+        let receiver = Summoner.load(event.params.to.toString())
         if (!receiver) {
-            receiver = new Summoner(event.params.to.toHex())
+            receiver = new Summoner(event.params.to.toString())
             receiver.balance = integer.ZERO
             globals.holders = globals.holders.plus(integer.ONE)
         }
@@ -40,7 +40,7 @@ export function handleTransfer(event: Transfer): void {
         }
 
         // Reduce balance from sender
-        let sender = Summoner.load(event.params.from.toHex())
+        let sender = Summoner.load(event.params.from.toString())
         if (sender) {
             sender.balance = sender.balance.minus(event.params.amount)
             if (sender.balance == integer.ZERO) {
@@ -50,9 +50,9 @@ export function handleTransfer(event: Transfer): void {
             sender.save()
 
             // Assign balance to receiver
-            let receiver = Summoner.load(event.params.to.toHex())
+            let receiver = Summoner.load(event.params.to.toString())
             if (!receiver) {
-                receiver = new Summoner(event.params.to.toHex())
+                receiver = new Summoner(event.params.to.toString())
                 receiver.balance = integer.ZERO
                 globals.holders = globals.holders.plus(integer.ONE)
             }
