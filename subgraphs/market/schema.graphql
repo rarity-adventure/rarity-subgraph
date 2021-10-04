@@ -3,8 +3,9 @@ type Sale @entity {
   id: ID!
 
   # Sale Information
+  summoner: BigInt!
   txid: String!
-  timestamp: String!
+  timestamp: BigInt!
   seller: String!
   buyer: String!
   price: BigInt!
