@@ -1,0 +1,14 @@
+type Sale @entity {
+  # Sale ID = Summoner ID + timestamp
+  id: ID!
+
+  # Sale Information
+  txid: String!
+  timestamp: String!
+  seller: String!
+  buyer: String!
+  price: BigInt!
+  fee: BigInt!
+}
+
+
