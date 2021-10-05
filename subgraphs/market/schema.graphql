@@ -1,3 +1,11 @@
+type Global @entity {
+  id: ID!
+
+  volume: BigInt!
+  fees: BigInt!
+  trades: BigInt!
+}
+
 type Sale @entity {
   # Sale ID = Summoner ID + timestamp
   id: ID!
